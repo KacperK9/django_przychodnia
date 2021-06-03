@@ -9,6 +9,9 @@ class Lekarz(models.Model):
     PESEL = models.CharField(max_length=11)
     specjalizacja = models.CharField(max_length=255, blank=True)
 
+    def __str__(self):
+        return self.imie+' '+self.nazwisko+'('+self.specjalizacja+')'
+
     class Meta:
         verbose_name_plural = "Lekarz"
 
@@ -49,6 +52,10 @@ class Pacjent(models.Model):
     data_urodzenia = models.DateField()
     PESEL = models.CharField(max_length=11)
     idChoroba = models.ForeignKey(to=Choroba, on_delete=models.SET_NULL, blank=True, null=True)
+
+    def __str__(self):
+        return self.imie+' '+self.nazwisko
+
     class Meta:
         verbose_name_plural = "Pacjent"
 

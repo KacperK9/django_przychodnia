@@ -28,18 +28,9 @@
 
     <section>
         <aside>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lorem risus, imperdiet vitae nisl vitae, malesuada malesuada tellus.
-                Fsce magna augue, tempus et orci non, tempor elementum eros. Fusce at felis id ex sollicitudin porta et eget eros. Quisque ac facilisis purus. Ut quis consequat nulla, eget feugiat justo. Quisque convallis mauris non lectus imperdiet mollis. Etiam at libero ac sem euismod sollicitudin. Maecenas in arcu at enim lobortis malesuada.
-                Nullam et eros et ex feugiat interdum. Morbi eu consequat magna. Mauris id nunc scelerisque, interdum sem ut, consequat nisl.
-                Vestibulum elementum urna eu dolor elementum varius.
-            </p>
-            <p>
-                Aliquam vitae laoreet elit. Vestibulum id efficitur sem. Morbi eu elit vitae felis accumsan viverra. Etiam ac sapien nisi.
-                Phasellus sollicitudin vestibulum ultrices. Nulla facilisi. Nullam mi mauris, placerat vel nulla quis, venenatis posuere libero.
-                Quisque sodales aliquam orci, ac rutrum neque molestie sed. Mauris iaculis nec eros a fringilla. Nullam lorem justo, fringilla vitae finibus quis, interdum et odio. Praesent consectetur est ac feugiat mattis. Nam ut nisl feugiat, scelerisque neque in, sollicitudin erat. Proin bibendum arcu sapien, eu efficitur velit semper semper. Cras pretium sem eu ex ultrices, a fringilla libero semper. Praesent in ante non erat volutpat sagittis. Proin accumsan id sem ut fermentum. 
-            </p>
-            
+            {% for rekord in pacjenci_all %}
+                <p>{{ rekord.imie }} {{rekord.nazwisko}} </p>
+            {% endfor %}
         </aside>
 
         <aside>
