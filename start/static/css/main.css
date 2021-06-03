@@ -1,0 +1,99 @@
+:root {
+    --royal-blue-dark: #0a2463ff;
+    --green-blue-crayola: #3e92ccff;
+    --magnolia: #fffaffff;
+    --cerise: #d8315bff;
+    --black-chocolate: #1e1b18ff;
+    --my-blue: #52738a;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: auto; /* kolumny na całą szerokość ekranu */
+    grid-template-rows: 150px auto 75px; /* trzy główne wiersze: nagłówek z nawigacją, sekcja, stopka */
+    min-height: 100vh;  /* minimalna wysokość - wypełniamy cały ekran*/
+    font-family: verdana;
+    color: var(--black-chocolate);
+}
+
+header {
+    /*background: linear-gradient(0deg, rgb(0, 0, 193) 0%, rgb(7, 128, 153) 100%); */
+    background-color: #d8edff;
+    display: flex;
+    flex-direction: column; /* ustawienie elementów wewnętrznych poziomo */
+    /*justify-content: space-between; /* rozłożenie ich w równnych odstępach */ 
+
+}
+
+#logo-container {
+    flex-grow: 1; /* umożliwienie kontenerowi rozszerzenia się  */
+    display: flex;
+    align-items: center; /* wyśrodkowanie zawarości kontenera w pionie */
+    padding-left: 30px;
+}
+
+nav {
+    background: var(--my-blue);
+    height: 50px;
+    align-self: flex-end; /* umieszczenie nawigacji na dole elementu-rodzica w którym się znajduje */ 
+    width: 100%;
+    display: flex;
+    justify-content: center; /* wyśrodkowanie w poziomie menu, które znajduje się wewnątrz znacznika */
+    align-items: center; /* wyśrodkowanie w pionie menu, które znajduje się wewnątrz znacznika */
+    border-top: 3px solid var(--royal-blue-dark);
+    border-bottom: 3px solid var(--royal-blue-dark);
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around; /* równomierne rozłożenie elementów znajdujących się wewnątrz znacznika */
+    flex-direction: row;
+    width: 60%;
+}
+
+ul > li > a {
+    color: #fff;
+    text-decoration: none;
+}
+
+ul > li > a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+section {
+    background: var(--magnolia);
+    display: flex;
+    box-shadow: inset 0px 8px 20px -10px #000000, inset 0px -8px 20px -10px #000000;
+
+    -webkit-box-shadow: inset 0px 8px 20px -10px #000000, inset 0px -8px 20px -10px #000000; 
+}
+
+
+aside {
+    flex-grow: 1;
+    padding: 30px;
+}
+
+aside:nth-child(odd) {
+    border-right: 2px dashed rgb(72, 181, 189);
+}
+
+aside > p:last-child {
+    padding-bottom: 1em;
+    border-bottom: 1px solid var(--green-blue-crayola);
+}
+
+footer {
+    background: var(--royal-blue-dark);
+    height: 75px;
+    box-sizing: border-box;
+    padding: 15px;
+    color: var(--magnolia);
+}
