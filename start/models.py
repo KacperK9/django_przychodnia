@@ -21,6 +21,9 @@ class Lek(models.Model):
     wymaganaRecepta = models.BooleanField()
     class Meta:
         verbose_name_plural = "Lek"
+    def __str__(self):
+        return self.nazwa
+
 
 class Recepta(models.Model):
     dataWystawienia = models.DateField()

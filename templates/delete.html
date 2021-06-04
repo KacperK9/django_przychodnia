@@ -1,0 +1,17 @@
+{% extends 'template.html' %}
+{% block content %}
+        <aside>
+           Czy na pewno chcesz usunąć {{ item }}?
+            <form action="{% url delLink item.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="Tak" value="Tak">
+                <a href="/">Nie</a>
+            </form>
+
+        </aside>
+
+        <aside>
+
+        </aside>
+
+{% endblock %}

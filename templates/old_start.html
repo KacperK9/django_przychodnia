@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna - Przychodnia Medyk</title>
+</head>
+<body>
+    
+    <header>
+        <div id="logo-container">
+            <a href="#"> <img src="{% static 'img/logo.png' %}" alt="Logo przychodni Medyk"> </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home  </a></li>
+                <li><a href="/info">Informacje o dyżurach </a></li>
+                <li><a href="/lekarze"> Lekarze </a></li>
+                <li><a href="{% url 'dodaj_lek' %}"> Dodaj lek </a></li>
+                <li><a href="{% url 'dodaj_choroba' %}"> Dodaj chorobe </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <aside>
+            <p>
+                {% for item in pacjenci_all %}
+                   <p> {{item.imie}} {{item.nazwisko}}<a href="{% url 'edytuj_pacjent' item.id %}">Edytuj</a> <a href="{% url 'usun_pacjent' item.id %}">Usuń</a></p> </p>
+                {% endfor %}
+            </p>
+
+        </aside>
+
+        <aside>
+
+            {% for item in leki %}
+            <p> {{ item.nazwa }} <a href="{% url 'edytuj_lek' item.id %}">Edytuj</a> <a href="{% url 'usun_lek' item.id %}">Usuń</a></p> 
+            {% endfor %}
+
+        </aside>
+
+    </section>
+
+<footer>
+    Informacje zawarte w stopce
+</footer>
+
+</body>
+</html>

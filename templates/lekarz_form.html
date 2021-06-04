@@ -1,0 +1,20 @@
+{% extends 'template.html' %}
+{% block content %}
+        <aside>
+            {% for rekord in lekarze %}
+                <p>{{ rekord.id }}. {{ rekord.imie }} {{rekord.nazwisko}} </p>
+            {% endfor %}
+        </aside>
+
+        <aside>
+            <form method="post" enctype="multipart/form-data">
+                <h2> Dodawanie rekordu </h2>
+                {% csrf_token %}
+                {{ form }}
+                <h2>Edycja rekordu</h2>
+
+                <button type="submit">Dodaj</button>
+            </form>
+        </aside>
+
+{% endblock %}
