@@ -1,0 +1,15 @@
+{% extends 'template.html' %}
+{% block content %}
+        <aside>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" name="Wyslij">
+            </form>
+        </aside>
+
+        <aside>
+            
+        </aside>
+
+{% endblock %}}

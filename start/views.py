@@ -251,45 +251,78 @@ def deleteObjaw(request, pk):
 
 
 
-
-#objaw
+#wizyta
 
 def addWizyta(request):
     form = WizytaForm()
 
     if request.method == 'POST':
-        form = ObjawForm(request.POST)
+        form = WizytaForm(request.POST)
         if form.is_valid():
             form.save() 
             return f_start(request)
     context = {'form': form}
-    return render(request, 'objaw_form.html', context)
+    return render(request, 'wizyta_form.html', context)
 
-def editObjaw(request, pk):
-    objaw = Objaw.objects.get(id=pk)
-    form = ObjawForm(instance=recepta)
+def editWizyta(request, pk):
+    wizyta = Wizyta.objects.get(id=pk)
+    form = WizytaForm(instance=wizyta)
 
     if request.method == 'POST':
-        form = ObjawForm(request.POST, instance=objaw)
+        form = WizytaForm(request.POST, instance=wizyta)
         if form.is_valid():
             form.save() 
             return f_start(request)
     
     context = {'form': form}
-    return render(request, 'objaw_form.html', context)
+    return render(request, 'wizyta_form.html', context)
 
-def deleteObjaw(request, pk):
-    lekarz = Objaw.objects.get(id=pk)
-    delLink = 'usun_objaw'
+def deleteWizyta(request, pk):
+    wizyta = Wizyta.objects.get(id=pk)
+    delLink = 'usun_wizyta'
     if request.method=='POST':
-        objaw.delete()
+        wizyta.delete()
         return f_start(request)
-    context = {'item':objaw, 'delLink': delLink}
+    context = {'item':wizyta, 'delLink': delLink}
     return render(request, 'delete.html', context)
 
 
 
 
+#dyzur
+
+def addDyzur(request):
+    form = DyzurForm()
+
+    if request.method == 'POST':
+        form = DyzurForm(request.POST)
+        if form.is_valid():
+            form.save() 
+            return f_start(request)
+    context = {'form': form}
+    return render(request, 'dyzur_form.html', context)
+
+def editDyzur(request, pk):
+    dyzur = Dyzur.objects.get(id=pk)
+    form = DyzurForm(instance=wizyta)
+
+    if request.method == 'POST':
+        form = DyzurForm(request.POST, instance=dyzur)
+        if form.is_valid():
+            form.save() 
+            return f_start(request)
+    
+    context = {'form': form}
+    return render(request, 'dyzur_form.html', context)
+
+def deleteDyzur(request, pk):
+    dyzur = Dyzur.objects.get(id=pk)
+    delLink = 'usun_dyzur'
+    if request.method=='POST':
+        wizyta.delete()
+        return f_start(request)
+    context = {'item':dyzur, 'delLink': delLink}
+    return render(request, 'delete.html', context)
 
 
 

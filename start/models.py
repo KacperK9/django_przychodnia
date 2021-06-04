@@ -39,7 +39,7 @@ class Recepta(models.Model):
 
 class Objaw(models.Model):
     nazwaObjawu = models.CharField(max_length=64)
-    opis = models.CharField(max_length=1024)
+    opis = models.CharField(max_length=1024, blank=True)
 
     def __str__(self):
         return self.nazwaObjawu
@@ -83,7 +83,7 @@ class Wizyta(models.Model):
     idPacjent = models.ForeignKey(to=Pacjent, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.dataWizyty+' '+self.godzina
+        return str(self.dataWizyty)+' '+str(self.godzina)
 
     class Meta:
         verbose_name_plural = "Wizyta"
@@ -94,8 +94,6 @@ class Dyzur(models.Model):
     czasZakonczenia = models.DateTimeField()
     idLekarz = models.ForeignKey(to=Lekarz, on_delete=models.CASCADE)
     
-    def __str__(self):
-        return self.czasRozpoczecia
     
     class Meta:
         verbose_name_plural = "Dyzur"

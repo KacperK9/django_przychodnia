@@ -50,4 +50,8 @@ urlpatterns = [
     path('dodaj_wizyta/', views.addWizyta, name="dodaj_wizyta"),
     path('edytuj_wizyta/<str:pk>/', views.editWizyta, name="edytuj_wizyta"),
     path('usun_wizyta/<str:pk>/', views.deleteWizyta, name="usun_wizyta"),
+
+    path('dodaj_dyzur/', views.addDyzur, name="dodaj_dyzur"),
+    path('edytuj_dyzur/<str:pk>/', views.editDyzur, name="edytuj_dyzur"),
+    path('usun_dyzur/<str:pk>/', views.deleteDyzur, name="usun_dyzur"),
 ]

@@ -1,43 +1,58 @@
 {% extends 'template.html' %}
 {% block content %}
         <aside>
-            <p>
-                {% for item in pacjenci_all %}
-                   <p> {{item.imie}} {{item.nazwisko}}<a href="{% url 'edytuj_pacjent' item.id %}">Edytuj</a> <a href="{% url 'usun_pacjent' item.id %}">Usuń</a></p> </p>
-                {% endfor %}
-            </p>
 
+            <table>
+            {% for item in pacjenci_all %}
+                <tr> <td>{{item.imie}}</td> <td>{{item.nazwisko}}</td> <td><a href="{% url 'edytuj_pacjent' item.id %}">Edytuj</a></td> <td><a href="{% url 'usun_pacjent' item.id %}">Usuń</a></td></tr>
+             {% endfor %}  
+            </table>
+            <table>
+            {% for item in lekarze_all %}
+            <tr> <td>{{item.imie}}</td> <td>{{item.nazwisko}}</td> <td><a href="{% url 'edytuj_lekarz' item.id %}">Edytuj</a></td> <td><a href="{% url 'usun_lekarz' item.id %}">Usuń</a></td></tr>
+            {% endfor %}
+            </table>
+
+            <table>
+            {% for item in wizyty_all %}
+            <tr> <td>{{item.dataWizyty}}</td> <td>{{item.godzina}}</td> <td><a href="{% url 'edytuj_wizyta' item.id %}">Edytuj</a></td> <td><a href="{% url 'usun_wizyta' item.id %}">Usuń</a></td></tr>
+            {% endfor %}
+            </table>
+
+            <table>
+            {% for item in dyzury_all %}
+            <tr> <td>{{item.czasRozpoczecia}}</td> <td>{{item.czasZakonczenia}}</td> <td><a href="{% url 'edytuj_dyzur' item.id %}">Edytuj</a></td> <td><a href="{% url 'usun_dyzur' item.id %}">Usuń</a></td></tr>
+            {% endfor %}
+            </table>
         </aside>
 
         <aside>
-
+            <table>
             {% for item in recepta_all %}
-            <p> {{ item }} <a href="{% url 'edytuj_recepta' item.id %}">Edytuj</a> <a href="{% url 'usun_recepta' item.id %}">Usuń</a></p> 
+            <tr> <td>{{item.idLek}}</td> <td>{{item.dataWystawienia}}</td> <td>{{item.dataWaznosci}}</td> <td><a href="{% url 'edytuj_lekarz' item.id %}">Edytuj</a></td> <td><a href="{% url 'usun_lekarz' item.id %}">Usuń</a></td></tr>
             {% endfor %}
-
-            {% for item in lekarze_all %}
-            <p> {{ item }} <a href="{% url 'edytuj_lekarz' item.id %}">Edytuj</a> <a href="{% url 'usun_lekarz' item.id %}">Usuń</a></p> 
-            {% endfor %}
-
+            </table>
+            
+            <table>
             {% for item in choroby_all %}
-            <p> {{ item }} <a href="{% url 'edytuj_choroba' item.id %}">Edytuj</a> <a href="{% url 'usun_choroba' item.id %}">Usuń</a></p> 
+            <tr> <td>{{item.nazwaChoroby}}</td> <td>{{item.Opis}}</td><td>{{item.idObjaw}}</td> <td><a href="{% url 'edytuj_lekarz' item.id %}">Edytuj</a></td> <td><a href="{% url 'usun_lekarz' item.id %}">Usuń</a></td></tr>
             {% endfor %}
-
+            </table>
+            
+            <table>
             {% for item in objawy_all %}
-            <p> {{ item }} <a href="{% url 'edytuj_objaw' item.id %}">Edytuj</a> <a href="{% url 'usun_objaw' item.id %}">Usuń</a></p> 
+            <tr> <td>{{item.nazwaObjawu}}</td> <td>{{item.opis}}</td> <td><a href="{% url 'edytuj_lekarz' item.id %}">Edytuj</a></td> <td><a href="{% url 'usun_lekarz' item.id %}">Usuń</a></td></tr>
             {% endfor %}
+            </table>
 
+            <table>
             {% for item in leki_all %}
-            <p> {{ item }} <a href="{% url 'edytuj_lek' item.id %}">Edytuj</a> <a href="{% url 'usun_lek' item.id %}">Usuń</a></p> 
+            <tr> <td>{{item.nazwa}}</td> <td>{{item.refundacja}}%</td> <td><a href="{% url 'edytuj_lekarz' item.id %}">Edytuj</a></td> <td><a href="{% url 'usun_lekarz' item.id %}">Usuń</a></td></tr> 
             {% endfor %}
+            </table>
+            
 
-            {% for item in wizyty_all %}
-            <p> {{ item }} <a href="{% url 'edytuj_wizyta' item.id %}">Edytuj</a> <a href="{% url 'usun_wizyta' item.id %}">Usuń</a></p> 
-            {% endfor %}
-
-            {% for item in dyzury_all %}
-            <p> {{ item }} <a href="{% url 'edytuj_dyzur' item.id %}">Edytuj</a> <a href="{% url 'usun_dyzur' item.id %}">Usuń</a></p> 
-            {% endfor %}
+            
 
         </aside>
 
