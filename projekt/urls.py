@@ -42,4 +42,12 @@ urlpatterns = [
     path('dodaj_recepta/', views.addRecepta, name="dodaj_recepta"),
     path('edytuj_recepta/<str:pk>/', views.editRecepta, name="edytuj_recepta"),
     path('usun_recepta/<str:pk>/', views.deleteRecepta, name="usun_recepta"),
+
+    path('dodaj_objaw/', views.addObjaw, name="dodaj_objaw"),
+    path('edytuj_objaw/<str:pk>/', views.editObjaw, name="edytuj_objaw"),
+    path('usun_objaw/<str:pk>/', views.deleteObjaw, name="usun_objaw"),
+
+    path('dodaj_wizyta/', views.addWizyta, name="dodaj_wizyta"),
+    path('edytuj_wizyta/<str:pk>/', views.editWizyta, name="edytuj_wizyta"),
+    path('usun_wizyta/<str:pk>/', views.deleteWizyta, name="usun_wizyta"),
 ]

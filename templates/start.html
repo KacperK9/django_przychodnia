@@ -11,8 +11,32 @@
 
         <aside>
 
-            {% for item in leki %}
-            <p> {{ item.nazwa }} <a href="{% url 'edytuj_lek' item.id %}">Edytuj</a> <a href="{% url 'usun_lek' item.id %}">Usuń</a></p> 
+            {% for item in recepta_all %}
+            <p> {{ item }} <a href="{% url 'edytuj_recepta' item.id %}">Edytuj</a> <a href="{% url 'usun_recepta' item.id %}">Usuń</a></p> 
+            {% endfor %}
+
+            {% for item in lekarze_all %}
+            <p> {{ item }} <a href="{% url 'edytuj_lekarz' item.id %}">Edytuj</a> <a href="{% url 'usun_lekarz' item.id %}">Usuń</a></p> 
+            {% endfor %}
+
+            {% for item in choroby_all %}
+            <p> {{ item }} <a href="{% url 'edytuj_choroba' item.id %}">Edytuj</a> <a href="{% url 'usun_choroba' item.id %}">Usuń</a></p> 
+            {% endfor %}
+
+            {% for item in objawy_all %}
+            <p> {{ item }} <a href="{% url 'edytuj_objaw' item.id %}">Edytuj</a> <a href="{% url 'usun_objaw' item.id %}">Usuń</a></p> 
+            {% endfor %}
+
+            {% for item in leki_all %}
+            <p> {{ item }} <a href="{% url 'edytuj_lek' item.id %}">Edytuj</a> <a href="{% url 'usun_lek' item.id %}">Usuń</a></p> 
+            {% endfor %}
+
+            {% for item in wizyty_all %}
+            <p> {{ item }} <a href="{% url 'edytuj_wizyta' item.id %}">Edytuj</a> <a href="{% url 'usun_wizyta' item.id %}">Usuń</a></p> 
+            {% endfor %}
+
+            {% for item in dyzury_all %}
+            <p> {{ item }} <a href="{% url 'edytuj_dyzur' item.id %}">Edytuj</a> <a href="{% url 'usun_dyzur' item.id %}">Usuń</a></p> 
             {% endfor %}
 
         </aside>

@@ -17,7 +17,7 @@ class Lekarz(models.Model):
 
 class Lek(models.Model):
     nazwa = models.CharField(max_length=255)
-    refundacja = models.SmallIntegerField()
+    refundacja = models.SmallIntegerField(default=0)
     wymaganaRecepta = models.BooleanField()
     class Meta:
         verbose_name_plural = "Lek"
@@ -27,8 +27,12 @@ class Lek(models.Model):
 
 class Recepta(models.Model):
     dataWystawienia = models.DateField()
-    dataWaznosci = models.DateField()
+    dataWaznosci = models.DateField(blank=True)
     idLek = models.ForeignKey(to=Lek, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.dataWystawienia)+' '+str(self.idLek)
+
     class Meta:
         verbose_name_plural = "Recepta"    
 
@@ -36,15 +40,23 @@ class Recepta(models.Model):
 class Objaw(models.Model):
     nazwaObjawu = models.CharField(max_length=64)
     opis = models.CharField(max_length=1024)
+
+    def __str__(self):
+        return self.nazwaObjawu
+
     class Meta:
         verbose_name_plural = "Objaw"
 
 
 class Choroba(models.Model):
     nazwaChoroby = models.CharField(max_length=255)
-    opis = models.CharField(max_length=1024)
+    opis = models.CharField(max_length=1024, blank=True)
     zakazna = models.BooleanField(default=False)
-    idObjaw = models.ForeignKey(to=Objaw, on_delete=models.CASCADE)
+    idObjaw = models.ForeignKey(to=Objaw, on_delete=models.CASCADE, blank=True)
+    
+    def __str__(self):
+        return self.nazwaChoroby
+
     class Meta:
         verbose_name_plural = "Choroba"
 
@@ -66,9 +78,13 @@ class Pacjent(models.Model):
 class Wizyta(models.Model):
     dataWizyty = models.DateField()
     godzina = models.TimeField()
-    idRecepta = models.ForeignKey(to=Recepta, on_delete=models.CASCADE)
+    idRecepta = models.ForeignKey(to=Recepta, on_delete=models.CASCADE, blank=True)
     idLekarz = models.ForeignKey(to=Lekarz, on_delete=models.CASCADE)
     idPacjent = models.ForeignKey(to=Pacjent, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.dataWizyty+' '+self.godzina
+
     class Meta:
         verbose_name_plural = "Wizyta"
 
@@ -77,5 +93,9 @@ class Dyzur(models.Model):
     czasRozpoczecia = models.DateTimeField()
     czasZakonczenia = models.DateTimeField()
     idLekarz = models.ForeignKey(to=Lekarz, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.czasRozpoczecia
+    
     class Meta:
         verbose_name_plural = "Dyzur"

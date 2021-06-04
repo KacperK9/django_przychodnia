@@ -13,7 +13,18 @@ def f_start(request):
     pacjenci = Pacjent.objects.all()
     lekarze = Lekarz.objects.all()
     leki = Lek.objects.all()
-    return render(request, 'start.html', {'pacjenci_all':pacjenci, 'lekarze': lekarze, 'leki': leki})
+    recepty = Recepta.objects.all()
+    objawy = Objaw.objects.all()
+    choroby = Choroba.objects.all()
+    wizyty = Wizyta.objects.all()
+    dyzury = Dyzur.objects.all()
+    return render(request, 'start.html', {'pacjenci_all':pacjenci, 'lekarze_all': lekarze,
+    'leki_all': leki, 'recepta_all': recepty, 'objawy_all': objawy,
+    'choroby_all': choroby, 'wizyty_all': wizyty, 'dyzury_all': dyzury
+    })
+
+
+
 '''
 def f_info(request, id=0):
     pacjenci = Pacjent.objects.all()
@@ -147,7 +158,7 @@ def addLekarz(request):
 
 def editLekarz(request, pk):
     lekarz = Lekarz.objects.get(id=pk)
-    form = LekarzForm(instance=pacjent)
+    form = LekarzForm(instance=lekarz)
 
     if request.method == 'POST':
         form = LekarzForm(request.POST, instance=lekarz)
@@ -202,3 +213,97 @@ def deleteRecepta(request, pk):
         return f_start(request)
     context = {'item':recepta, 'delLink': delLink}
     return render(request, 'delete.html', context)
+
+#objaw
+
+def addObjaw(request):
+    form = ObjawForm()
+
+    if request.method == 'POST':
+        form = ObjawForm(request.POST)
+        if form.is_valid():
+            form.save() 
+            return f_start(request)
+    context = {'form': form}
+    return render(request, 'objaw_form.html', context)
+
+def editObjaw(request, pk):
+    objaw = Objaw.objects.get(id=pk)
+    form = ObjawForm(instance=recepta)
+
+    if request.method == 'POST':
+        form = ObjawForm(request.POST, instance=objaw)
+        if form.is_valid():
+            form.save() 
+            return f_start(request)
+    
+    context = {'form': form}
+    return render(request, 'objaw_form.html', context)
+
+def deleteObjaw(request, pk):
+    lekarz = Objaw.objects.get(id=pk)
+    delLink = 'usun_objaw'
+    if request.method=='POST':
+        objaw.delete()
+        return f_start(request)
+    context = {'item':objaw, 'delLink': delLink}
+    return render(request, 'delete.html', context)
+
+
+
+
+#objaw
+
+def addWizyta(request):
+    form = WizytaForm()
+
+    if request.method == 'POST':
+        form = ObjawForm(request.POST)
+        if form.is_valid():
+            form.save() 
+            return f_start(request)
+    context = {'form': form}
+    return render(request, 'objaw_form.html', context)
+
+def editObjaw(request, pk):
+    objaw = Objaw.objects.get(id=pk)
+    form = ObjawForm(instance=recepta)
+
+    if request.method == 'POST':
+        form = ObjawForm(request.POST, instance=objaw)
+        if form.is_valid():
+            form.save() 
+            return f_start(request)
+    
+    context = {'form': form}
+    return render(request, 'objaw_form.html', context)
+
+def deleteObjaw(request, pk):
+    lekarz = Objaw.objects.get(id=pk)
+    delLink = 'usun_objaw'
+    if request.method=='POST':
+        objaw.delete()
+        return f_start(request)
+    context = {'item':objaw, 'delLink': delLink}
+    return render(request, 'delete.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
